@@ -7,6 +7,7 @@ After you clone the repo, simply install all the gem, create and migrate the dat
 
 ```sh
 $ bundle install
+$ yarn install
 $ rake db:create
 $ rake db:migrate
 $ bundle exec foreman start -f Procfile.dev
