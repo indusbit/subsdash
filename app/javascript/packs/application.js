@@ -4,18 +4,15 @@
 // to the head of your layout file,
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
+import 'bootstrap/scss/bootstrap'
+import '../styles/common.scss'
+import Vue from 'vue/dist/vue.esm'
 
-import Vue from 'vue'
-import App from '../app.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
-  const el = document.body.appendChild(document.createElement('hello'))
   const app = new Vue({
-    el,
-    render: h => h(App)
+    el: '#app'
   })
-
-  console.log(app)
 })
 
 
