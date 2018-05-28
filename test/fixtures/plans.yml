@@ -1,0 +1,40 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  oid: MyString
+  interval: MyString
+  interval_count: 1
+  amount: 9.99
+  currency: MyString
+  platform: MyString
+
+two:
+  name: MyString
+  oid: MyString
+  interval: MyString
+  interval_count: 1
+  amount: 9.99
+  currency: MyString
+  platform: MyString
+
+# == Schema Information
+#
+# Table name: plans
+#
+#  id             :bigint(8)        not null, primary key
+#  amount         :decimal(18, 4)
+#  currency       :string
+#  interval       :string
+#  interval_count :integer
+#  name           :string
+#  oid            :string
+#  platform       :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+# Indexes
+#
+#  index_plans_on_interval  (interval)
+#  index_plans_on_oid       (oid)
+#

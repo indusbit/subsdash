@@ -10,9 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_05_28_114437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "customers", force: :cascade do |t|
+    t.string "oid"
+    t.string "name"
+    t.string "email"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["oid"], name: "index_customers_on_oid"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "name"
+    t.string "oid"
+    t.string "interval"
+    t.integer "interval_count"
+    t.decimal "amount", precision: 18, scale: 4
+    t.string "currency"
+    t.string "platform"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["interval"], name: "index_plans_on_interval"
+    t.index ["oid"], name: "index_plans_on_oid"
+  end
 
 end

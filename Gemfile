@@ -41,6 +41,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem 'foreman'
+  gem 'annotate'
 end
 
 group :test do
