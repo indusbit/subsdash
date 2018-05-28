@@ -1,5 +1,8 @@
 class Plan < ApplicationRecord
   validates_uniqueness_of :oid
+
+  has_many :subscriptions
+  has_many :customers, through: :subscriptions
 end
 
 # == Schema Information
