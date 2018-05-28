@@ -7,7 +7,9 @@
 import 'bootstrap/scss/bootstrap'
 import '../styles/common.scss'
 import Vue from 'vue/dist/vue.esm'
+import Rails from 'rails-ujs';
 
+Rails.start()
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
