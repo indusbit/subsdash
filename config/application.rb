@@ -27,7 +27,9 @@ module Subsdash
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    # Disable asset pipeline as we will be using Yarn.
-    config.assets.enabled = false
+    # Disable asset generators as we will be using Yarn.
+    config.generators do |g|
+      g.assets false
+    end
   end
 end
