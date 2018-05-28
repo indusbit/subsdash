@@ -5,8 +5,8 @@ one:
   plan: one
   started_at: 2018-05-28 17:46:05
   quantity: 1
-  active: false
-  oid: MyString
+  active: true
+  oid: one
 
 two:
   customer: two
@@ -14,7 +14,7 @@ two:
   started_at: 2018-05-28 17:46:05
   quantity: 1
   active: false
-  oid: MyString
+  oid: two
 
 # == Schema Information
 #

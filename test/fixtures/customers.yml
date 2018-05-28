@@ -1,16 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  oid: MyString
-  name: MyString
-  email: MyString
-  notes: MyText
+  oid: one
+  name: David
+  email: one@example.com
+  notes: Random notes
 
 two:
-  oid: MyString
-  name: MyString
-  email: MyString
-  notes: MyText
+  oid: two
+  name: Copperfield
+  email: two@example.com
+  notes: Random notes part 2
 
 # == Schema Information
 #

@@ -1,9 +1,12 @@
 require 'test_helper'
 
 class CustomerTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "oid should be unique" do
+    customer = customers(:one)
+    new_customer = Customer.new oid: customer.oid
+    assert !new_customer.save
+    assert_includes new_customer.errors.details[:oid], { error: :taken, value: customer.oid }
+  end
 end
 
 # == Schema Information

@@ -1,9 +1,12 @@
 require 'test_helper'
 
 class PlanTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "oid should be unique" do
+    plan = plans(:one)
+    new_plan = Plan.new oid: plan.oid
+    assert !new_plan.save
+    assert_includes new_plan.errors.details[:oid], { error: :taken, value: plan.oid }
+  end
 end
 
 # == Schema Information

@@ -1,9 +1,12 @@
 require 'test_helper'
 
 class SubscriptionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "oid should be unique" do
+    subscription = subscriptions(:one)
+    new_subscription = Subscription.new oid: subscription.oid
+    assert !new_subscription.save
+    assert_includes new_subscription.errors.details[:oid], { error: :taken, value: subscription.oid }
+  end
 end
 
 # == Schema Information
