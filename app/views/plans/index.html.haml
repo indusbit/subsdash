@@ -1,0 +1,14 @@
+%page{ heading: 'Plans' }
+  .table-responsive
+    %table.table.col-12.table-sm
+      %thead
+        %tr
+          %th PLAN
+          %th MRR
+          %th CUSTOMERS
+      %tbody
+        - @plans.each do |plan|
+          %tr
+            %td= plan.name
+            %td= number_to_currency plan.total_monthly
+            %td= plan.customers.size

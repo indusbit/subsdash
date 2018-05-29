@@ -1,6 +1,7 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top#mainNav{role: "navigation"}
   .container
     %a.navbar-brand.js-scroll-trigger{:href => "/"} Subsdash
+    %a.navbar-brand.js-scroll-trigger{ href: "/" } Subsdash
     %ul.navbar-nav
       %li.nav-item
-        = link_to "Dashboard", '/', class: "nav-link"
+        = link_to 'Plans', plans_path, class: "nav-link"

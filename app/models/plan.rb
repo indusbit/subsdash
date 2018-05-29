@@ -3,6 +3,25 @@ class Plan < ApplicationRecord
 
   has_many :subscriptions
   has_many :customers, through: :subscriptions
+
+  def monthly_amount
+    case interval
+    when "yearly"
+      amount / 12
+    when "monthly"
+      amount
+    when "weekly"
+      amount * 4
+    when "daily"
+      amount * 30
+    end
+  end
+
+  def total_monthly
+    subscriptions.inject(0) do |sum, subscription|
+      sum + subscription.monthly_revenue
+    end
+  end
 end
 
 # == Schema Information

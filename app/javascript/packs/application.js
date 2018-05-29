@@ -4,12 +4,14 @@
 // to the head of your layout file,
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
-import 'bootstrap/scss/bootstrap'
 import '../styles/common.scss'
 import Vue from 'vue/dist/vue.esm'
+import page from '../page.vue'
 import Rails from 'rails-ujs';
 
 Rails.start()
+
+Vue.component('page', page)
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
