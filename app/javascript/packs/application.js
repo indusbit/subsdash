@@ -6,12 +6,17 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 import '../styles/common.scss'
 import Vue from 'vue/dist/vue.esm'
+import Rails from 'rails-ujs'
+
 import page from '../page.vue'
-import Rails from 'rails-ujs';
+
+import PlanForm from '../components/plan_form'
+
 
 Rails.start()
 
 Vue.component('page', page)
+Vue.component('plan_form', PlanForm)
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
