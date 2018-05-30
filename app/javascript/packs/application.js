@@ -4,21 +4,32 @@
 // to the head of your layout file,
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
-import '../styles/common.scss'
 import Vue from 'vue/dist/vue.esm'
+import Notifications from 'vue-notification'
 import Rails from 'rails-ujs'
+import axios from 'axios'
+import '../styles/common.scss'
 
 import page from '../page.vue'
 
-import PlanForm from '../components/plan_form'
+import PlanForm from '../components/plans/plan_form'
+import PlanList from '../components/plans/plan_list'
 
 
 Rails.start()
 
+Vue.use(Notifications)
+
 Vue.component('page', page)
 Vue.component('plan_form', PlanForm)
+Vue.component('plan_list', PlanList)
 
 document.addEventListener('DOMContentLoaded', () => {
+  // This code will setup headers of X-CSRF-Token that it grabs from rails generated token in meta tag.
+  axios.defaults.headers.common['X-CSRF-Token'] = document
+    .querySelector('meta[name="csrf-token"]')
+    .getAttribute('content')
+
   const app = new Vue({
     el: '#app'
   })

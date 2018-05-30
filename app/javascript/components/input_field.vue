@@ -16,6 +16,9 @@ export default {
     }
   },
   watch: {
+    value (n, o) {
+      this.calculatedValue = n
+    },
     calculatedValue: function (value, old) {
       this.$emit('input', value)
     }

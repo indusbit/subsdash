@@ -15,4 +15,4 @@
                 %td= number_to_currency plan.total_monthly
                 %td= plan.customers.size
     .col-md-6
-      %plan_form{ ":plan" => Plan.new.to_json(except: [:id, :created_at, :updated_at]) }
+      %plan_form{ ':plan_attributes' => Plan.new.to_json(except: [:id, :created_at, :updated_at]) }

@@ -5,10 +5,11 @@
     %title Subsdash
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_pack_tag 'application'
     = javascript_pack_tag 'application'
+    = stylesheet_pack_tag 'application'
     %link{ href: "https://fonts.googleapis.com/css?family=Open+Sans", rel: "stylesheet" }
   %body
     #app
       = render 'layouts/navbar'
+      %notifications.notification{ group: 'foo', position: 'top right' }
       = yield

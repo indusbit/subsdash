@@ -8,3 +8,33 @@
 #mainNav {
   box-shadow: 0rem 0rem .2rem .2rem #999999;
 }
+
+.notification {
+  margin-top: 4rem;
+}
+
+.vue-notification {
+  padding: 10px;
+  margin: 0 5px 5px;
+
+  font-size: $font-size-base;
+
+  color: #ffffff;
+  background: $primary;
+  border-left: 5px solid darken($primary, 15%);
+
+  &.warn {
+    background: $warning;
+    border-left-color: darken($warning, 15%);
+  }
+
+  &.error {
+    background: $danger;
+    border-left-color: darken($danger, 15%);
+  }
+
+  &.success {
+    background: $success;
+    border-left-color: darken($success, 15%);
+  }
+}
