@@ -1,4 +1,5 @@
 class Subscription < ApplicationRecord
+  validates_presence_of :oid
   validates_uniqueness_of :oid
   
   belongs_to :customer
