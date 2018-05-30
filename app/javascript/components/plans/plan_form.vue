@@ -1,5 +1,5 @@
 <template>
-  <Card header="Add a Plan">
+  <Card>
     <form v-on:submit.prevent='submit'>
       <InputField label='Your ID' model='plan' field='oid' v-model='plan.oid' :autofocus='oid_focus'/>
       <InputField label='Name' model='plan' field='name' v-model='plan.name' />
