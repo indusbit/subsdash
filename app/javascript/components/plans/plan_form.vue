@@ -1,35 +1,30 @@
 <template>
-  <div>
-    <button v-on:click='showForm = true' class='btn btn-primary float-right' v-if='!showForm'>Add a Plan</button>
-    <Card v-if='showForm'>
-      <form v-on:submit.prevent='submit'>
-        <InputField label='Your ID' model='plan' field='oid' v-model='plan.oid' />
-        <InputField label='Name' model='plan' field='name' v-model='plan.name' />
-        <InputField label='Amount' model='plan' field='amount' v-model='plan.amount' type='number' />
-        <InputField label='Platform' model='plan' field='platform' v-model='plan.platform' />
-        <div class='form-group'>
-          <label>Interval</label>
-          <select v-model='plan.interval' class='form-control'>
-            <option disabled value=''>Please select one</option>
-            <option value='monthly'>Monthly</option>
-            <option value='yearly'>Yearly</option>
-            <option value='weekly'>Weekly</option>
-            <option value='daily'>Daily</option>
-          </select>
-        </div>
-        <input v-if="!submitting" type='submit' value='Add' name='commit' class='btn btn-primary'>
-        <input v-else type='submit' value='Adding...' name='commit' class='btn btn-primary' disabled>
-        <button v-on:click.prevent='showForm = false' class='btn btn-danger'>
-          Close Form
-        </button>
-      </form>
-    </Card>
-  </div>
+  <Card header="Add a Plan">
+    <form v-on:submit.prevent='submit'>
+      <InputField label='Your ID' model='plan' field='oid' v-model='plan.oid' :autofocus='oid_focus'/>
+      <InputField label='Name' model='plan' field='name' v-model='plan.name' />
+      <InputField label='Amount' model='plan' field='amount' v-model='plan.amount' type='number' />
+      <InputField label='Platform' model='plan' field='platform' v-model='plan.platform' />
+      <div class='form-group'>
+        <label>Interval</label>
+        <select v-model='plan.interval' class='form-control'>
+          <option disabled value=''>Please select one</option>
+          <option value='monthly'>Monthly</option>
+          <option value='yearly'>Yearly</option>
+          <option value='weekly'>Weekly</option>
+          <option value='daily'>Daily</option>
+        </select>
+      </div>
+      <input v-if="!submitting" type='submit' value='Save' name='commit' class='btn btn-primary'>
+      <input v-else type='submit' value='Saving...' name='commit' class='btn btn-primary' disabled>
+    </form>
+  </Card>
 </template>
 <script>
 import InputField from '../input_field.vue'
 import Card from '../card.vue'
 import API from '../../api/index.js'
+import Events from '../../events'
 
 export default {
   props: {
@@ -41,8 +36,8 @@ export default {
   data: function () {
     return {
       plan: this.plan_attributes,
-      showForm: false,
-      submitting: false
+      submitting: false,
+      oid_focus: true
     }
   },
   methods: {
@@ -50,17 +45,21 @@ export default {
       var that = this
       that.submitting = true
       var planApi = new API.Plan(that.plan)
-      planApi.create()
+      planApi.save()
         .then(response => {
           // window.location = window.location
-          console.log(response)
           var plan = that.plan
           this.$notify({
             group: 'foo',
             title: 'Plan added!',
             type: 'success',
             text: 'Plan with oid: ' + plan.oid + ' and name: ' + plan.name + ' added.'
-          });
+          })
+          if (plan.id) {
+            this.updatePlanForDisplay(response.data)
+          } else {
+            Events.$emit('plan:created', response.data)
+          }
           this.resetPlan()
         })
         .catch(error => {
@@ -71,6 +70,7 @@ export default {
     },
     resetPlan () {
       this.plan = {
+        id: null,
         amount: null,
         interval: null,
         interval_count: 1,
@@ -80,6 +80,16 @@ export default {
         currency: 'USD'
       }
       this.submitting = false
+      this.oid_focus = true
+    },
+    updatePlanForDisplay (data) {
+      this.plan.amount = data.amount
+      this.plan.interval = data.interval
+      this.plan.interval_count = data.interval_count
+      this.plan.name = data.name
+      this.plan.oid = data.oid
+      this.plan.platform = data.platform
+      this.plan.currency = data.currency
     }
   },
   components: {
@@ -89,6 +99,10 @@ export default {
   created: function () {
     this.plan.interval_count = 1
     this.plan.currency = 'USD'
+
+    Events.$on('plan:edit', (plan) => {
+      this.plan = plan
+    })
   }
 }
 </script>

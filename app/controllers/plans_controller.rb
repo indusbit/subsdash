@@ -12,7 +12,16 @@ class PlansController < ApplicationController
     if @plan.save
       render json: @plan
     else
-      render json: { error: "can't save" }
+      render status: :bad_request, json: { error: "can't save" }
+    end
+  end
+
+  def update
+    @plan = Plan.find params[:id]
+    if @plan.update plan_params
+      render json: @plan
+    else
+      render status: :bad_request, json: { error: "can't save" }
     end
   end
 

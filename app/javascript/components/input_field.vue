@@ -1,16 +1,16 @@
 <template>
   <div class="form-group">
     <label :for="identifier">{{label}}</label>
-    <input v-model="calculatedValue" :type="calculatedType" :name="name" :value="value" :id="identifier" class="form-control">
+    <input v-model="calculatedValue" :type="calculatedType" :name="name" :value="value" :id="identifier" :autofocus="autofocus" class="form-control">
   </div>
 </template>
 <script>
 export default {
-  props: ['model', 'field', 'value', 'label', 'type'],
+  props: ['model', 'field', 'value', 'label', 'type', 'autofocus'],
   data: function () {
     return {
-      name: this.model + "[" + this.field + "]",
-      identifier: this.model + "-form-" + this.field,
+      name: `${this.model}[${this.field}]`,
+      identifier: `${this.model}-form-${this.field}`,
       calculatedType: this.type || 'text',
       calculatedValue: this.value
     }
