@@ -2,22 +2,22 @@ module Api::V1
   class PlansController < ApiController
 
     # GET /v1/plans
-    # @query_parameter [float] range
-    # @response_class BicyclesSerializer
     def index
       @plans = Plan.all
     end
 
-    # GET /v1/plans/:id
-    # @response_class BicycleSerializer
+    # GET /v1/plans/:oid
     def show
-      @plan = Plan.find params[:id]
+      render status: :unprocessable_entity, json: { error: "Please pass plan oid" } unless params[:id]
+      @plan = Plan.find_by_oid params[:id]
+      
+      render status: :unprocessable_entity, json: { error: "Plan not found." } unless @plan
     end
 
     def create
       @plan = Plan.new plan_params
 
-      @plan.save
+      render status: :unprocessable_entity, json: { error: @plan.errors } unless @plan.save 
     end
 
   private
