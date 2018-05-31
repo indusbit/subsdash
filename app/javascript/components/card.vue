@@ -28,6 +28,11 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+@import '../styles/variables';
 
+.card-header {
+  background-color: $primary;
+  color: white;
+}
 </style>

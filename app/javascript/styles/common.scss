@@ -1,16 +1,26 @@
 @import 'variables';
 @import '~bootstrap/scss/bootstrap';
 
+.white-bg {
+  background-color: $white;
+  border-radius: 0.25rem;
+}
+
+body {
+  background-color: $gray-200;
+}
+
 #app {
   margin-top: 4rem;
 }
 
 #mainNav {
-  box-shadow: 0rem 0rem .2rem .2rem #999999;
+  box-shadow: 0rem 0.2rem 0.2rem 0rem #444444;
 }
 
 .notification {
   margin-top: 4rem;
+  background-color: rgba(0,0,0,0);
 }
 
 .vue-notification {
@@ -36,5 +46,11 @@
   &.success {
     background: $success;
     border-left-color: darken($success, 15%);
+  }
+}
+
+.table-plan {
+  th {
+    border-top: none;
   }
 }

@@ -1,7 +1,7 @@
 <template>
-  <Card>
+  <Card :header='header'>
     <form v-on:submit.prevent='submit'>
-      <InputField label='Your ID' model='plan' field='oid' v-model='plan.oid' :autofocus='oid_focus'/>
+      <InputField label='Your ID' model='plan' field='oid' v-model='plan.oid' :autofocus='focus_on_oid'/>
       <InputField label='Name' model='plan' field='name' v-model='plan.name' />
       <InputField label='Amount' model='plan' field='amount' v-model='plan.amount' type='number' />
       <InputField label='Platform' model='plan' field='platform' v-model='plan.platform' />
@@ -25,6 +25,7 @@ import InputField from '../input_field.vue'
 import Card from '../card.vue'
 import API from '../../api/index.js'
 import Events from '../../events'
+import Cable from '../../cable'
 
 export default {
   props: {
@@ -37,7 +38,7 @@ export default {
     return {
       plan: this.plan_attributes,
       submitting: false,
-      oid_focus: true
+      focus_on_oid: true
     }
   },
   methods: {
@@ -47,19 +48,7 @@ export default {
       var planApi = new API.Plan(that.plan)
       planApi.save()
         .then(response => {
-          // window.location = window.location
           var plan = that.plan
-          this.$notify({
-            group: 'foo',
-            title: 'Plan added!',
-            type: 'success',
-            text: 'Plan with oid: ' + plan.oid + ' and name: ' + plan.name + ' added.'
-          })
-          if (plan.id) {
-            this.updatePlanForDisplay(response.data)
-          } else {
-            Events.$emit('plan:created', response.data)
-          }
           this.resetPlan()
         })
         .catch(error => {
@@ -80,16 +69,16 @@ export default {
         currency: 'USD'
       }
       this.submitting = false
-      this.oid_focus = true
-    },
-    updatePlanForDisplay (data) {
-      this.plan.amount = data.amount
-      this.plan.interval = data.interval
-      this.plan.interval_count = data.interval_count
-      this.plan.name = data.name
-      this.plan.oid = data.oid
-      this.plan.platform = data.platform
-      this.plan.currency = data.currency
+      this.focus_on_oid = true
+    }
+  },
+  computed: {
+    header () {
+      if (this.plan.id) {
+        return `Editing - ${this.plan.name}`
+      } else {
+        return 'Add a new Plan'
+      }
     }
   },
   components: {
@@ -99,6 +88,8 @@ export default {
   created: function () {
     this.plan.interval_count = 1
     this.plan.currency = 'USD'
+
+    Cable.plans(this) // Subscribe to updating plans in real time
 
     Events.$on('plan:edit', (plan) => {
       this.plan = plan
