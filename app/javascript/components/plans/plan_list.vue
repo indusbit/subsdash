@@ -50,7 +50,9 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+@import '../../styles/_variables.scss';
+
 .btn-sm {
   font-size: 0.75rem;
   padding-top: 0.2rem;
@@ -67,7 +69,7 @@ tr.changed {
   }
 
   50% {
-    background-color: #B060D1;
+    background-color: $info;
   }
 
   100% {
