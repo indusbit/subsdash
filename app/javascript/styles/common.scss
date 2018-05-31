@@ -47,3 +47,9 @@ body {
     border-left-color: darken($success, 15%);
   }
 }
+
+.table-plan {
+  th {
+    border-top: none;
+  }
+}
