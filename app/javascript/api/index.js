@@ -1,11 +1,9 @@
-import axios from 'axios'
 import Plan from './plan'
+import Customer from './customer'
 
-class API {
-  constructor() { 
-  }
+var API = {
+  Plan,
+  Customer
 }
-
-API.Plan = Plan
 
 export default API

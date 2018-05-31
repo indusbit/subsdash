@@ -27,7 +27,31 @@ var channels = {
         }
       }
     })
-  }
+  }, // plans (vm)
+  customers (vm) {
+    cable.subscriptions.create({ channel: 'CustomersChannel' }, {
+      received (data) {
+        var customer = data.customer
+        if (data.action === 'create') {
+          Events.$emit('customer:created', customer)
+          vm.$notify({
+            group: 'foo',
+            title: 'Customer added!',
+            type: 'success',
+            text: `Customer with oid: ${customer.oid} and name: ${customer.name} added.`
+          })
+        } else if (data.action === 'update') {
+          Events.$emit('customer:updated', customer)
+          vm.$notify({
+            group: 'foo',
+            title: 'Customer updated!',
+            type: 'success',
+            text: `Customer with oid: ${customer.oid} has been updated.`
+          })
+        }
+      }
+    })
+  }, // customers (vm)
 }
 
 export default channels

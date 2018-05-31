@@ -1,0 +1,14 @@
+%page{ heading: 'Customers' }
+  .row
+    .col-md-8.white-bg
+      .table-responsive
+        %table.table.table-hover.col-12.table-sm.table-plan
+          %thead
+            %tr
+              %th YOUR ID
+              %th NAME
+              %th EMAIL
+              %th
+          %tbody{ is: 'customer_list', ':initial_customers': @customers.to_json }
+    .col-md-4
+      %customer_form{ ':customer_attributes' => Customer.new.to_json(except: [:created_at, :updated_at]) }
