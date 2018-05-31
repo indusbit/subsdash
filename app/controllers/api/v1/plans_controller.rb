@@ -6,7 +6,7 @@ module Api::V1
       @plans = Plan.all
     end
 
-    # GET /v1/plans/:oid
+    # GET /v1/plans/:id
     def show
       render status: :unprocessable_entity, json: { error: "Please pass plan oid" } unless params[:id]
       @plan = Plan.find_by_oid params[:id]
