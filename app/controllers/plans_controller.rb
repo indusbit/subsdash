@@ -27,6 +27,7 @@ class PlansController < ApplicationController
     end
   end
 
+  # Not implemented yet because behaviour in undecided.
   def destroy
     @plan = Plan.find params[:id]
 
