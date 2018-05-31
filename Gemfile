@@ -42,6 +42,7 @@ group :development do
 
   gem 'foreman'
   gem 'annotate'
+  gem 'pry-rails'
 end
 
 group :test do
