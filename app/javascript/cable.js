@@ -14,7 +14,7 @@ var channels = {
             group: 'foo',
             title: 'Plan added!',
             type: 'success',
-            text: 'Plan with oid: ' + plan.oid + ' and name: ' + plan.name + ' added.'
+            text: `Plan with oid: ${plan.oid} and name: ${plan.name} added.`
           })
         } else if (data.action === 'update') {
           Events.$emit('plan:updated', plan)
@@ -22,7 +22,7 @@ var channels = {
             group: 'foo',
             title: 'Plan updated!',
             type: 'success',
-            text: 'Plan with oid: ' + plan.oid + ' has been updated.'
+            text: `Plan with oid: ${plan.oid} has been updated.`
           })
         }
       }
