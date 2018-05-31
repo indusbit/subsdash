@@ -1,5 +1,5 @@
 <template>
-  <Card>
+  <Card :header='header'>
     <form v-on:submit.prevent='submit'>
       <InputField label='Your ID' model='plan' field='oid' v-model='plan.oid' :autofocus='oid_focus'/>
       <InputField label='Name' model='plan' field='name' v-model='plan.name' />
@@ -25,6 +25,7 @@ import InputField from '../input_field.vue'
 import Card from '../card.vue'
 import API from '../../api/index.js'
 import Events from '../../events'
+import Cable from '../../cable'
 
 export default {
   props: {
@@ -49,17 +50,9 @@ export default {
         .then(response => {
           // window.location = window.location
           var plan = that.plan
-          this.$notify({
-            group: 'foo',
-            title: 'Plan added!',
-            type: 'success',
-            text: 'Plan with oid: ' + plan.oid + ' and name: ' + plan.name + ' added.'
-          })
-          if (plan.id) {
-            this.updatePlanForDisplay(response.data)
-          } else {
-            Events.$emit('plan:created', response.data)
-          }
+          // if (plan.id) {
+          //   this.updatePlanForDisplay(response.data)
+          // }
           this.resetPlan()
         })
         .catch(error => {
@@ -92,6 +85,15 @@ export default {
       this.plan.currency = data.currency
     }
   },
+  computed: {
+    header () {
+      if (this.plan.id) {
+        return `Editing - ${this.plan.name}`
+      } else {
+        return 'Add a new Plan'
+      }
+    }
+  },
   components: {
     InputField,
     Card
@@ -99,6 +101,8 @@ export default {
   created: function () {
     this.plan.interval_count = 1
     this.plan.currency = 'USD'
+
+    Cable.plans(this)
 
     Events.$on('plan:edit', (plan) => {
       this.plan = plan

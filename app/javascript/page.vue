@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <h1>{{ heading }}</h1>
-    <hr />
     <slot></slot>
   </div>
 </template>

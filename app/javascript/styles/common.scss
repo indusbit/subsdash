@@ -1,6 +1,15 @@
 @import 'variables';
 @import '~bootstrap/scss/bootstrap';
 
+.white-bg {
+  background-color: $white;
+  border-radius: 0.25rem;
+}
+
+body {
+  background-color: $gray-200;
+}
+
 #app {
   margin-top: 4rem;
 }
