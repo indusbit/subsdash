@@ -1,23 +1,23 @@
 import axios from 'axios'
 
 class Plan {
-  constructor(plan) {
+  constructor (plan) {
     this.plan = plan
   }
   
-  create() {
+  create () {
     return axios.post(`/plans`, {
       plan: this.plan
     })
   }
 
-  update() {
+  update () {
     return axios.patch(`/plans/${this.plan.id}`, {
       plan: this.plan
     })
   }
 
-  save() {
+  save () {
     if (this.plan.id) {
       return this.update()
     } else {
