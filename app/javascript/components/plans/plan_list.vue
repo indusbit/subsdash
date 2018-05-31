@@ -39,7 +39,7 @@ export default {
   },
   created () {
     Events.$on('plan:created', (plan) => {
-      this.plans.push(plan)
+      this.plans.unshift(plan)
     })
 
     Events.$on('plan:updated', (plan) => {
