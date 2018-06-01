@@ -8,26 +8,34 @@ module Api::V1
 
     # GET /v1/plans/:id
     def show
-      return render status: :unprocessable_entity, json: { error: "Please pass plan oid" } unless params[:id]
       @plan = Plan.find_by_oid params[:id]
-      
-      render status: :unprocessable_entity, json: { error: "Plan not found." } unless @plan
+
+      head :not_found unless @plan
     end
 
     def create
       @plan = Plan.new plan_params
 
-      render status: :unprocessable_entity, json: { error: @plan.errors.full_messages } unless @plan.save 
+      render status: :unprocessable_entity, json: { error: @plan.errors } unless @plan.save 
+    end
+
+    def update
+      @plan = Plan.find_by_oid params[:id]
+      return head :not_found unless @plan
+      
+      @plan.assign_attributes plan_params
+      
+      return render status: :unprocessable_entity, json: { error: @plan.errors } unless @plan.save
     end
 
     def destroy
       @plan = Plan.find_by_oid params[:id]
-      return render status: :unprocessable_entity, json: { error: "Plan not found." } unless @plan
+      return head :not_found unless @plan
 
       if @plan.destroy
         render json: { message: "Successfully deleted the plan." }
       else
-        render status: :unprocessable_entity, json: { error: @plan.errors.full_messages }
+        render status: :unprocessable_entity, json: { error: @plan.errors }
       end
     end
 
