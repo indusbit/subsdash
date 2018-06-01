@@ -28,7 +28,6 @@ Vue.component('plan_list', PlanList)
 Vue.component('customer_form', CustomerForm)
 Vue.component('customer_list', CustomerList)
 
-
 document.addEventListener('DOMContentLoaded', () => {
   // This code will setup headers of X-CSRF-Token that it grabs from rails generated token in meta tag.
   axios.defaults.headers.common['X-CSRF-Token'] = document
@@ -38,16 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#app'
   })
-
-  document.addEventListener('click', function (event) {
-
-    if (event.target.matches('.navbar-toggler')) {
-      // For making toggler button in smaller screen work without bootstrap.js
-      document.getElementsByClassName('navbar-collapse')[0].classList.toggle('collapse')
-    }
-  }, false);
-
 })
+
+document.addEventListener('click', function (event) {
+  if (event.target.matches('.navbar-toggler')) {
+    // For making toggler button in smaller screen work without bootstrap.js
+    document.getElementsByClassName('navbar-collapse')[0].classList.toggle('collapse')
+  }
+}, false)
 
 
 // The above code uses Vue without the compiler, which means you cannot
