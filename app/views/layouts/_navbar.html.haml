@@ -1,7 +1,9 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top#mainNav{ role: "navigation" }
-  .container-fluid
-    %a.navbar-brand.js-scroll-trigger{ href: "/" } Subsdash
-    %ul.navbar-nav
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top#mainNav{ role: 'navigation' }
+  %a.navbar-brand{ href: "/" } Subsdash
+  %button.navbar-toggler{ type: "button", "data-toggle" => "collapse", "data-target" => "#navbarText", "aria-controls" => "navbarText", "aria-expanded" => "false", "aria-label" => "Toggle navigation" }
+    %span.navbar-toggler-icon
+  .collapse.navbar-collapse#navbarText
+    %ul.navbar-nav.mr-auto
       %li.nav-item
         = link_to 'Plans', plans_path, class: "nav-link"
       %li.nav-item
