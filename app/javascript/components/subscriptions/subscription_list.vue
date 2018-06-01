@@ -50,7 +50,6 @@ export default {
 
     Events.$on('subscription:updated', (subscription) => {
       var index = this.subscriptions.findIndex((p) => p.id === subscription.id)
-      console.log('ajshifskf', index, subscription)
       this.$set(this.subscriptions, index, subscription)
       this.notify = subscription.id
     })
