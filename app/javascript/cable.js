@@ -57,7 +57,6 @@ var channels = {
       received (data) {
         var subscription = data.subscription
         if (data.action === 'create') {
-          console.log('sajfhjasfnjsafjnsaf')
           Events.$emit('subscription:created', subscription)
           vm.$notify({
             group: 'foo',
