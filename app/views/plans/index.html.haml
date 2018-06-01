@@ -1,6 +1,6 @@
 %page{ heading: 'Plans' }
   .row
-    .col-md-8.white-bg
+    .col-md-8.mb-2.white-bg
       .table-responsive
         %table.table.table-hover.col-12.table-sm.table-plan
           %thead
@@ -10,11 +10,5 @@
               %th AMOUNT
               %th
           %tbody{ is: 'plan_list', ':initial_plans': @plans.to_json }
-    .col-md-4
+    .col-md-4.mb-2
       %plan_form{ ':plan_attributes' => Plan.new.to_json(except: [:created_at, :updated_at]) }
-/ %tbody
-/   - @plans.each do |plan|
-/     %tr
-/       %td= plan.name
-/       %td= number_to_currency plan.total_monthly
-/       %td= plan.customers.size
