@@ -3,13 +3,14 @@
     <tr v-for='plan in plans' :class='rowClass(plan)'>
       <td>{{ plan.oid }}</td>
       <td>{{ plan.name }}</td>
-      <td>{{ plan.amount }} / {{ plan.interval }}</td>
+      <td>{{ numberToCurrency(plan) }} {{ plan.interval }}</td>
       <td><button class="btn btn-sm btn-info" v-on:click='edit(plan)'>Edit</button></td>
     </tr>
   </tbody>
 </template>
 <script>
 import Events from '../../events'
+import Utils from '../../utils'
 
 export default {
   props: {
@@ -35,6 +36,10 @@ export default {
         return 'changed'
       else
         return ''
+    },
+    numberToCurrency (plan) {
+      console.log()
+      return Utils.numberToCurrency(Number(plan.amount), plan.currency)
     }
   },
   created () {
