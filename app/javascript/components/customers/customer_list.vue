@@ -1,10 +1,10 @@
 <template>
   <tbody>
-    <tr v-for='plan in plans' :class='rowClass(plan)'>
-      <td>{{ plan.oid }}</td>
-      <td>{{ plan.name }}</td>
-      <td>{{ plan.amount }} / {{ plan.interval }}</td>
-      <td><button class="btn btn-sm btn-info" v-on:click='edit(plan)'>Edit</button></td>
+    <tr v-for='customer in customers' :class='rowClass(customer)'>
+      <td>{{ customer.oid }}</td>
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.email }}</td>
+      <td><button class="btn btn-sm btn-info" v-on:click='edit(customer)'>Edit</button></td>
     </tr>
   </tbody>
 </template>
@@ -13,40 +13,40 @@ import Events from '../../events'
 
 export default {
   props: {
-    initial_plans: {
+    initial_customers: {
       type: Array,
       required: true
     }
   },
   data () {
     return {
-      plans: this.initial_plans,
+      customers: this.initial_customers,
       notify: null
     }
   },
   methods: {
-    edit (plan) {
-      Events.$emit('plan:edit', plan)
+    edit (customer) {
+      Events.$emit('customer:edit', customer)
       this.notify = null
     },
-    rowClass (plan) {
+    rowClass (customer) {
       if (this.notify === null) return ''
-      if (plan.id === this.notify)
+      if (customer.id === this.notify)
         return 'changed'
       else
         return ''
     }
   },
   created () {
-    Events.$on('plan:created', (plan) => {
-      this.plans.unshift(plan)
+    Events.$on('customer:created', (customer) => {
+      this.customers.unshift(customer)
       this.notify = customer.id
     })
 
-    Events.$on('plan:updated', (plan) => {
-      var index = this.plans.findIndex((p) => p.id === plan.id)
-      this.$set(this.plans, index, plan)
-      this.notify = plan.id
+    Events.$on('customer:updated', (customer) => {
+      var index = this.customers.findIndex((c) => c.id === customer.id)
+      this.$set(this.customers, index, customer)
+      this.notify = customer.id
     })
   }
 }

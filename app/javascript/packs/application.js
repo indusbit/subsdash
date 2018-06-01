@@ -14,6 +14,8 @@ import page from '../page.vue'
 
 import PlanForm from '../components/plans/plan_form'
 import PlanList from '../components/plans/plan_list'
+import CustomerForm from '../components/customers/customer_form'
+import CustomerList from '../components/customers/customer_list'
 
 
 Rails.start()
@@ -23,6 +25,9 @@ Vue.use(Notifications)
 Vue.component('page', page)
 Vue.component('plan_form', PlanForm)
 Vue.component('plan_list', PlanList)
+Vue.component('customer_form', CustomerForm)
+Vue.component('customer_list', CustomerList)
+
 
 document.addEventListener('DOMContentLoaded', () => {
   // This code will setup headers of X-CSRF-Token that it grabs from rails generated token in meta tag.
