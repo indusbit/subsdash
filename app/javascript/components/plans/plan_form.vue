@@ -1,7 +1,7 @@
 <template>
   <Card :header='header'>
     <form v-on:submit.prevent='submit'>
-      <InputField label='Your ID' model='plan' field='oid' v-model='plan.oid' :autofocus='focus_on_oid'/>
+      <InputField label='Your ID' model='plan' field='oid' v-model='plan.oid'/>
       <InputField label='Name' model='plan' field='name' v-model='plan.name' />
       <InputField label='Amount' model='plan' field='amount' v-model='plan.amount' type='number' />
       <InputField label='Platform' model='plan' field='platform' v-model='plan.platform' />
@@ -37,8 +37,7 @@ export default {
   data: function () {
     return {
       plan: this.plan_attributes,
-      submitting: false,
-      focus_on_oid: true
+      submitting: false
     }
   },
   methods: {
@@ -69,7 +68,6 @@ export default {
         currency: 'USD'
       }
       this.submitting = false
-      this.focus_on_oid = true
     }
   },
   computed: {

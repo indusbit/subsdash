@@ -1,7 +1,7 @@
 <template>
   <Card :header='header'>
     <form v-on:submit.prevent='submit'>
-      <InputField label='Your ID' model='customer' field='oid' v-model='customer.oid' :autofocus='focus_on_oid'/>
+      <InputField label='Your ID' model='customer' field='oid' v-model='customer.oid'/>
       <InputField label='Name' model='customer' field='name' v-model='customer.name' />
       <InputField label='Email' model='customer' field='email' v-model='customer.email' type='email' />
       <div class='form-group'>
@@ -30,8 +30,7 @@ export default {
   data: function () {
     return {
       customer: this.customer_attributes,
-      submitting: false,
-      focus_on_oid: true
+      submitting: false
     }
   },
   methods: {
@@ -59,7 +58,6 @@ export default {
         notes: null,
       }
       this.submitting = false
-      this.focus_on_oid = true
     }
   },
   computed: {
