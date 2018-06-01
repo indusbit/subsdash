@@ -40,12 +40,13 @@ export default {
   created () {
     Events.$on('plan:created', (plan) => {
       this.plans.unshift(plan)
+      this.notify = customer.id
     })
 
     Events.$on('plan:updated', (plan) => {
       var index = this.plans.findIndex((p) => p.id === plan.id)
-      this.notify = plan.id
       this.$set(this.plans, index, plan)
+      this.notify = plan.id
     })
   }
 }

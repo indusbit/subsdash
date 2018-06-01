@@ -40,12 +40,13 @@ export default {
   created () {
     Events.$on('customer:created', (customer) => {
       this.customers.unshift(customer)
+      this.notify = customer.id
     })
 
     Events.$on('customer:updated', (customer) => {
       var index = this.customers.findIndex((c) => c.id === customer.id)
-      this.notify = customer.id
       this.$set(this.customers, index, customer)
+      this.notify = customer.id
     })
   }
 }
