@@ -54,3 +54,28 @@ body {
     border-top: none;
   }
 }
+
+
+.btn-sm-td {
+  font-size: 0.75rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+tr.updated {
+  animation: pulse 500ms 3;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #FFFFFF;
+  }
+
+  50% {
+    background-color: $info;
+  }
+
+  100% {
+    background-color: #FFFFFF;
+  }
+}
