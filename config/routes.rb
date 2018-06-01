@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     end
   end
 
+  root 'subscriptions#index'
 end
