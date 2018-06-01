@@ -4,7 +4,7 @@
       <td>{{ plan.oid }}</td>
       <td>{{ plan.name }}</td>
       <td>{{ numberToCurrency(plan) }} {{ plan.interval }}</td>
-      <td><button class="btn btn-sm btn-info" v-on:click='edit(plan)'>Edit</button></td>
+      <td><button class="btn btn-sm btn-info btn-sm-td" v-on:click='edit(plan)'>Edit</button></td>
     </tr>
   </tbody>
 </template>
@@ -33,7 +33,7 @@ export default {
     rowClass (plan) {
       if (this.notify === null) return ''
       if (plan.id === this.notify)
-        return 'changed'
+        return 'updated'
       else
         return ''
     },
@@ -56,29 +56,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../../styles/_variables.scss';
 
-.btn-sm {
-  font-size: 0.75rem;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
-}
-
-tr.changed {
-  animation: pulse 500ms 3;
-}
-
-@keyframes pulse {
-  0% {
-    background-color: #FFFFFF;
-  }
-
-  50% {
-    background-color: $info;
-  }
-
-  100% {
-    background-color: #FFFFFF;
-  }
-}
 </style>

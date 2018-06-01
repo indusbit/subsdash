@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :plans
   resources :customers
+  resources :subscriptions
 
   namespace :api do
     namespace :v1 do
@@ -8,4 +9,5 @@ Rails.application.routes.draw do
     end
   end
 
+  root 'subscriptions#index'
 end

@@ -16,6 +16,8 @@ import PlanForm from '../components/plans/plan_form'
 import PlanList from '../components/plans/plan_list'
 import CustomerForm from '../components/customers/customer_form'
 import CustomerList from '../components/customers/customer_list'
+import SubscriptionForm from '../components/subscriptions/subscription_form'
+import SubscriptionList from '../components/subscriptions/subscription_list'
 
 
 Rails.start()
@@ -27,6 +29,8 @@ Vue.component('plan_form', PlanForm)
 Vue.component('plan_list', PlanList)
 Vue.component('customer_form', CustomerForm)
 Vue.component('customer_list', CustomerList)
+Vue.component('subscription_form', SubscriptionForm)
+Vue.component('subscription_list', SubscriptionList)
 
 document.addEventListener('DOMContentLoaded', () => {
   // This code will setup headers of X-CSRF-Token that it grabs from rails generated token in meta tag.
@@ -40,6 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 document.addEventListener('click', function (event) {
+  // Internet Explorer uses msMatchesSelector, so let's use that for
+  // matching the selector.
+  if (!Element.prototype.matches) {
+    Element.prototype.matches = Element.prototype.msMatchesSelector;
+  }
   if (event.target.matches('.navbar-toggler')) {
     // For making toggler button in smaller screen work without bootstrap.js
     document.getElementsByClassName('navbar-collapse')[0].classList.toggle('collapse')

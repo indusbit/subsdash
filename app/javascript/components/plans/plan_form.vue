@@ -6,8 +6,8 @@
       <InputField label='Amount' model='plan' field='amount' v-model='plan.amount' type='number' />
       <InputField label='Platform' model='plan' field='platform' v-model='plan.platform' />
       <div class='form-group'>
-        <label>Interval</label>
-        <select v-model='plan.interval' class='form-control'>
+        <label for='plan-form-interval'>Interval</label>
+        <select v-model='plan.interval' class='form-control' id='plan-form-interval'>
           <option disabled value=''>Please select one</option>
           <option value='monthly'>Monthly</option>
           <option value='yearly'>Yearly</option>
