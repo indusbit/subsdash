@@ -52,6 +52,31 @@ var channels = {
       }
     })
   }, // customers (vm)
+  subscriptions (vm) {
+    cable.subscriptions.create({ channel: 'SubscriptionsChannel' }, {
+      received (data) {
+        var subscription = data.subscription
+        if (data.action === 'create') {
+          console.log('sajfhjasfnjsafjnsaf')
+          Events.$emit('subscription:created', subscription)
+          vm.$notify({
+            group: 'foo',
+            title: 'Subscription added!',
+            type: 'success',
+            text: `Subscription with oid: ${subscription.oid} added.`
+          })
+        } else if (data.action === 'update') {
+          Events.$emit('subscription:updated', subscription)
+          vm.$notify({
+            group: 'foo',
+            title: 'Subscription updated!',
+            type: 'success',
+            text: `Subscription with oid: ${subscription.oid} has been updated.`
+          })
+        }
+      }
+    })
+  }, // subscriptions (vm)
 }
 
 export default channels

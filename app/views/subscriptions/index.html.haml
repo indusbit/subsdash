@@ -1,0 +1,15 @@
+%page{ heading: 'Subscription' }
+  .row
+    .col-md-8.mb-2.white-bg
+      .table-responsive
+        %table.table.table-hover.col-12.table-sm.table-plan
+          %thead
+            %tr
+              %th YOUR ID
+              %th CUSTOMER
+              %th PLAN
+              %th
+              %th
+          %tbody{ is: 'subscription_list', ':initial_subscriptions': @subscriptions.to_json(include: [:plan, :customer]) }
+    .col-md-4.mb-2
+      %subscription_form{ ':subscription_attributes' => Subscription.new.to_json(except: [:created_at, :updated_at]), ':customers': Customer.all.to_json(only: [:id, :name]), ':plans': Plan.all.to_json(only: [:id, :name]) }
