@@ -8,7 +8,6 @@ import Vue from 'vue/dist/vue.esm'
 import Notifications from 'vue-notification'
 import Rails from 'rails-ujs'
 import axios from 'axios'
-import 'bootstrap/dist/js/bootstrap';
 import '../styles/common.scss'
 
 import page from '../page.vue'
@@ -39,6 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#app'
   })
+
+  document.addEventListener('click', function (event) {
+
+    if (event.target.matches('.navbar-toggler')) {
+      // For making toggler button in smaller screen work without bootstrap.js
+      document.getElementsByClassName('navbar-collapse')[0].classList.toggle('collapse')
+    }
+  }, false);
+
 })
 
 
