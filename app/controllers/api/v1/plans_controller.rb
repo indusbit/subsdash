@@ -20,6 +20,12 @@ module Api::V1
       render status: :unprocessable_entity, json: { error: @plan.errors.full_messages } unless @plan.save 
     end
 
+    def update
+      @plan = Plan.find_by_oid params[:id]
+      @plan.assign_attributes plan_params
+      return render status: :unprocessable_entity, json: { error: @plan.errors.full_messages } unless @plan.save
+    end
+
     def destroy
       @plan = Plan.find_by_oid params[:id]
       return render status: :unprocessable_entity, json: { error: "Plan not found." } unless @plan
