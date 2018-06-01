@@ -44,6 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 document.addEventListener('click', function (event) {
+  // Internet Explorer uses msMatchesSelector, so let's use that for
+  // matching the selector.
+  if (!Element.prototype.matches) {
+    Element.prototype.matches = Element.prototype.msMatchesSelector;
+  }
   if (event.target.matches('.navbar-toggler')) {
     // For making toggler button in smaller screen work without bootstrap.js
     document.getElementsByClassName('navbar-collapse')[0].classList.toggle('collapse')
