@@ -38,7 +38,6 @@ export default {
         return ''
     },
     numberToCurrency (plan) {
-      console.log()
       return Utils.numberToCurrency(Number(plan.amount), plan.currency)
     }
   },
