@@ -11,7 +11,7 @@ var channels = {
         if (data.action === 'create') {
           Events.$emit('plan:created', plan)
           vm.$notify({
-            group: 'foo',
+            group: 'alerts',
             title: 'Plan added!',
             type: 'success',
             text: `Plan with oid: ${plan.oid} and name: ${plan.name} added.`
@@ -19,7 +19,7 @@ var channels = {
         } else if (data.action === 'update') {
           Events.$emit('plan:updated', plan)
           vm.$notify({
-            group: 'foo',
+            group: 'alerts',
             title: 'Plan updated!',
             type: 'success',
             text: `Plan with oid: ${plan.oid} has been updated.`
@@ -35,7 +35,7 @@ var channels = {
         if (data.action === 'create') {
           Events.$emit('customer:created', customer)
           vm.$notify({
-            group: 'foo',
+            group: 'alerts',
             title: 'Customer added!',
             type: 'success',
             text: `Customer with oid: ${customer.oid} and name: ${customer.name} added.`
@@ -43,7 +43,7 @@ var channels = {
         } else if (data.action === 'update') {
           Events.$emit('customer:updated', customer)
           vm.$notify({
-            group: 'foo',
+            group: 'alerts',
             title: 'Customer updated!',
             type: 'success',
             text: `Customer with oid: ${customer.oid} has been updated.`
@@ -59,7 +59,7 @@ var channels = {
         if (data.action === 'create') {
           Events.$emit('subscription:created', subscription)
           vm.$notify({
-            group: 'foo',
+            group: 'alerts',
             title: 'Subscription added!',
             type: 'success',
             text: `Subscription with oid: ${subscription.oid} added.`
@@ -67,7 +67,7 @@ var channels = {
         } else if (data.action === 'update') {
           Events.$emit('subscription:updated', subscription)
           vm.$notify({
-            group: 'foo',
+            group: 'alerts',
             title: 'Subscription updated!',
             type: 'success',
             text: `Subscription with oid: ${subscription.oid} has been updated.`
