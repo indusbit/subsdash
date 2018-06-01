@@ -8,6 +8,7 @@ import Vue from 'vue/dist/vue.esm'
 import Notifications from 'vue-notification'
 import Rails from 'rails-ujs'
 import axios from 'axios'
+import 'bootstrap/dist/js/bootstrap';
 import '../styles/common.scss'
 
 import page from '../page.vue'

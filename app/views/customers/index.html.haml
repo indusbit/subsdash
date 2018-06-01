@@ -1,6 +1,6 @@
 %page{ heading: 'Customers' }
   .row
-    .col-md-8.white-bg
+    .col-md-8.mb-2.white-bg
       .table-responsive
         %table.table.table-hover.col-12.table-sm.table-plan
           %thead
@@ -10,5 +10,5 @@
               %th EMAIL
               %th
           %tbody{ is: 'customer_list', ':initial_customers': @customers.to_json }
-    .col-md-4
+    .col-md-4.mb-2
       %customer_form{ ':customer_attributes' => Customer.new.to_json(except: [:created_at, :updated_at]) }
