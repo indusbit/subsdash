@@ -26,6 +26,6 @@ class SubscriptionsController < ApplicationController
   private
 
     def subscription_params
-      params.require(:subscription).permit(:oid, :plan_id, :customer_id, :active, :quantity, :started_at)
+      params.require(:subscription).permit(:oid, :plan_id, :customer_id, :cancelled_at, :quantity, :started_at)
     end
 end

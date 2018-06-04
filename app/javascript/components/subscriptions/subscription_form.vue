@@ -68,7 +68,7 @@ export default {
         id: null,
         oid: null,
         quantity: 1,
-        active: true,
+        cancelled_at: null,
         started_at: null,
         customer_id: null,
         plan_id: null,
@@ -91,7 +91,7 @@ export default {
   },
   created: function () {
     this.subscription.quantity = 1
-    this.subscription.active = true
+    this.subscription.cancelled_at = null
 
     Cable.subscriptions(this) // Subscribe to updating subscriptions in real time
 
