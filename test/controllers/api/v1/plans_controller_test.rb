@@ -16,7 +16,7 @@ module Api::V1
 
     test "should not find a plan for wrong oid" do
       plan = plans(:one)
-      get api_v1_plan_path(id: plan.id), as: :json
+      get api_v1_plan_path(id: 'DOES NOT EXIST'), as: :json
       assert_response :not_found
     end
 
