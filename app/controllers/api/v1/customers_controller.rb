@@ -1,4 +1,4 @@
-class Api::V1::CustomersController < ApplicationController
+class Api::V1::CustomersController < Api::V1::ApiController
     def index
       @customers = Customer.all
     end

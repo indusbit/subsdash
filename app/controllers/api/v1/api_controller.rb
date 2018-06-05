@@ -1,6 +1,6 @@
 module Api::V1
   class ApiController < ApplicationController
-    respond_to :json
+    protect_from_forgery with: :null_session
 
     rescue_from ActiveRecord::RecordNotFound do |e|
       render json: { error: e.message }, status: :not_found

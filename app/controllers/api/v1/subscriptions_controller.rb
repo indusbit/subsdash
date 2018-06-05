@@ -1,6 +1,6 @@
-class Api::V1::SubscriptionsController < ApplicationController
+class Api::V1::SubscriptionsController < Api::V1::ApiController
   def index
-    @subscriptions = Subscription.all
+    @subscriptions = Subscription.all.includes [:plan, :customer]
   end
 
   def show
