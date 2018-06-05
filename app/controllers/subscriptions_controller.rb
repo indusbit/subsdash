@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
   def index
-    @subscriptions = Subscription.all.order(id: :desc)
+    @subscriptions = Subscription.all.order(id: :desc).includes([:plan, :customer])
   end
 
   def create
