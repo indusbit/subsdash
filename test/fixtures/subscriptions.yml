@@ -5,7 +5,7 @@ one:
   plan: one
   started_at: 2018-05-28 17:46:05
   quantity: 1
-  active: true
+  cancelled_at: null
   oid: one
 
 two:
@@ -13,22 +13,22 @@ two:
   plan: two
   started_at: 2018-05-28 17:46:05
   quantity: 1
-  active: false
+  cancelled_at: <%= 2.days.ago %>
   oid: two
 
 # == Schema Information
 #
 # Table name: subscriptions
 #
-#  id          :bigint(8)        not null, primary key
-#  active      :boolean
-#  oid         :string
-#  quantity    :integer
-#  started_at  :datetime
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  customer_id :bigint(8)
-#  plan_id     :bigint(8)
+#  id           :bigint(8)        not null, primary key
+#  cancelled_at :datetime
+#  oid          :string
+#  quantity     :integer
+#  started_at   :datetime
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  customer_id  :bigint(8)
+#  plan_id      :bigint(8)
 #
 # Indexes
 #

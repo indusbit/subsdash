@@ -14,15 +14,15 @@ end
 #
 # Table name: subscriptions
 #
-#  id          :bigint(8)        not null, primary key
-#  active      :boolean
-#  oid         :string
-#  quantity    :integer
-#  started_at  :datetime
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  customer_id :bigint(8)
-#  plan_id     :bigint(8)
+#  id           :bigint(8)        not null, primary key
+#  cancelled_at :datetime
+#  oid          :string
+#  quantity     :integer
+#  started_at   :datetime
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  customer_id  :bigint(8)
+#  plan_id      :bigint(8)
 #
 # Indexes
 #
