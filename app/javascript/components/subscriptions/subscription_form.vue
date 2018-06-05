@@ -16,6 +16,7 @@
           <option v-for='plan in plans' :value='plan.id'>{{plan.name}}</option>
         </select>
       </div>
+      <InputField label='Quantity' model='subscription' field='quantity' v-model='subscription.quantity' type='number' />
       <input v-if="!submitting" type='submit' value='Save' name='commit' class='btn btn-primary'>
       <input v-else type='submit' value='Saving...' name='commit' class='btn btn-primary' disabled>
     </form>
