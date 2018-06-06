@@ -3,10 +3,10 @@
     .col-md-12.mb-2
       .row
         .col-md-6
-          %report_summary.mb-2.white-bg{ ':chart': {data: @mrr, date: @dates}.to_json, chart_name: 'MRR', chart_id: 'mrr', ':currency': 'true', summary: 'last' }
+          %report_summary.mb-2.white-bg{ chart_name: 'MRR', chart_id: 'mrr', ':currency': 'true', summary: 'last', ':chart': {data: @mrr, date: @dates}.to_json }
         .col-md-6
-          %report_summary.mb-2.white-bg{ ':chart': {data: @users, date: @dates}.to_json, chart_name: 'Users', chart_id: 'users', ':currency': 'false', summary: 'last' }
+          %report_summary.mb-2.white-bg{ chart_name: 'Users', chart_id: 'users', ':currency': 'false', summary: 'last', ':chart': {data: @customers, date: @dates}.to_json }
         .col-md-6
-          %report_summary.mb-2.white-bg{ ':chart': {data: @new_users, date: @dates}.to_json, chart_name: 'New Users', chart_id: 'new_users', ':currency': 'false', summary: 'sum' }
+          %report_summary.mb-2.white-bg{ chart_name: 'New Users', chart_id: 'new_users', ':currency': 'false', summary: 'sum', ':chart': {data: @new_customers, date: @dates}.to_json }
         .col-md-6
-          %report_summary.mb-2.white-bg{ ':chart': {data: @cancellations, date: @dates}.to_json, chart_name: 'Cancellations', chart_id: 'cancellations', ':currency': 'false', summary: 'sum' }
+          %report_summary.mb-2.white-bg{ chart_name: 'Cancellations', chart_id: 'cancellations', ':currency': 'false', summary: 'sum', ':chart': {data: @cancellations, date: @dates}.to_json }

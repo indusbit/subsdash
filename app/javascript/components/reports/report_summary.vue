@@ -17,9 +17,9 @@ export default {
         datasets: [{
           label: this.chart_name,
           data: this.chart.data,
-          borderWidth: 1,
-          borderColor: '#5a60da', // $primary from variables
-          backgroundColor: '#5a60da' 
+          borderWidth: 2,
+          borderColor: '#000000',
+          backgroundColor: '#5a60da' // $primary from variables
         }]
       }
     }
@@ -45,7 +45,9 @@ export default {
   },
   mounted () {
     var that = this
-    var ticks = {}
+    var ticks = {
+      beginAtZero: true
+    }
 
     // Adding the ticks callback this way so yAxes doesn't look weird.
     if (that.currency) {
