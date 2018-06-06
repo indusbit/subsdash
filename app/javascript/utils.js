@@ -6,6 +6,10 @@ class Utils {
     }
     return n.toLocaleString('en-US', { style: 'currency', currency: currency, minimumFractionDigits: 2 })
   }
+
+  static sum (arr) {
+    return arr.reduce((sum, e) => sum + e)
+  }
 }
 
 export default Utils

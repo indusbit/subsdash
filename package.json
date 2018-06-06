@@ -6,6 +6,7 @@
     "actioncable": "^5.2.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
+    "chart.js": "^2.7.2",
     "rails-ujs": "^5.2.0",
     "vue": "^2.5.16",
     "vue-loader": "14.2.2",

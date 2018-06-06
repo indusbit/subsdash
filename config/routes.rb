@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'subscriptions#index'
+  get '/reports' => 'reports#index'
+
+  root 'reports#index'
 end
