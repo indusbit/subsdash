@@ -1,10 +1,11 @@
 <template>
   <tbody>
-    <tr v-for='plan in plans' :class='rowClass(plan)'>
+    <tr v-for='plan in plans' :class='rowClass(plan)' v-on:click='show(plan)'>
       <td>{{ plan.oid }}</td>
       <td>{{ plan.name }}</td>
-      <td>{{ numberToCurrency(plan) }} {{ plan.interval }}</td>
-      <td><button class="btn btn-sm btn-info btn-sm-td" v-on:click='edit(plan)'>Edit</button></td>
+      <td>{{ amountToCurrency(plan) }} {{ plan.interval }}</td>
+      <td>{{ totalToCurrency(plan) }} monthly</td>
+      <td><button class="btn btn-sm btn-info btn-sm-td" v-on:click.prevent='edit(plan)'>Edit</button></td>
     </tr>
   </tbody>
 </template>
@@ -31,14 +32,20 @@ export default {
       this.notify = null
     },
     rowClass (plan) {
-      if (this.notify === null) return ''
+      if (this.notify === null) return 'pointer-on-hover'
       if (plan.id === this.notify)
-        return 'updated'
+        return 'pointer-on-hover updated'
       else
-        return ''
+        return 'pointer-on-hover'
     },
-    numberToCurrency (plan) {
+    amountToCurrency (plan) {
       return Utils.numberToCurrency(Number(plan.amount), plan.currency)
+    },
+    totalToCurrency (plan) {
+      return Utils.numberToCurrency(Number(plan.total_monthly), plan.currency)
+    },
+    show (plan) {
+      window.location = `/plans/${plan.id}`
     }
   },
   created () {
@@ -56,5 +63,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+.pointer-on-hover:hover {
+  cursor: pointer;
+}
 </style>
