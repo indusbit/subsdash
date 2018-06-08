@@ -5,7 +5,7 @@
       <td>{{ plan.name }}</td>
       <td>{{ amountToCurrency(plan) }} {{ plan.interval }}</td>
       <td>{{ totalToCurrency(plan) }} monthly</td>
-      <td><button class="btn btn-sm btn-info btn-sm-td" v-on:click.prevent='edit(plan)'>Edit</button></td>
+      <td><button class="btn btn-sm btn-info btn-sm-td" v-on:click.stop='edit(plan)'>Edit</button></td>
     </tr>
   </tbody>
 </template>
