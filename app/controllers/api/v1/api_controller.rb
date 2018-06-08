@@ -3,7 +3,7 @@ module Api::V1
     protect_from_forgery with: :null_session
 
     rescue_from ActiveRecord::RecordNotFound do |e|
-      render json: { error: e.message }, status: :not_found
+      head :not_found
     end
 
     rescue_from ActionController::ParameterMissing do |e|
